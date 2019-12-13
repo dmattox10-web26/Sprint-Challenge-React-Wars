@@ -20,7 +20,7 @@ const SWCard = (props) => {
             <CardHeader tag="h3">{ props.starPerson.name }</CardHeader>
             <CardBody>
             <CardTitle>Of { homeworld } Appears in:</CardTitle>
-                {props.starPerson.films.forEach(film => 
+                {props.starPerson.films.map(film => 
                     <FilmText film={ film } />)}
             </CardBody>
             <CardFooter className="text-muted">Born: { props.starPerson.birth_year }</CardFooter>
