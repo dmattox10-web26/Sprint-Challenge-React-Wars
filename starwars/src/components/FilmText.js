@@ -11,7 +11,8 @@ const FilmText = (props) => {
             .then(res => {
                 updateTitle(res.data.title)
             })
-    }, [])
+    }, [props.film])
+
     return (
        <CardText>
            { filmTitle }

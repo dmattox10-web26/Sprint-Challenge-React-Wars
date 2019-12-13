@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Button } from 'reactstrap'
 
 import Card from './components/SWCard'
 
@@ -26,25 +26,32 @@ const App = () => {
       })
   }, [currentPage])
 
-  const fwdPage = () => {
-
+  const nextPage = () => {
+    updatePage(page => page += 1)
   }
 
   const backPage = () => {
-
+    if(currentPage > 1)
+    updatePage(page => page -= 1)
   }
   
   return (
     <div className='App'>
       <h1 className='Header'>React Wars</h1>
       <Container>
-        {starPeople.map(starPerson => 
-          <Row>
-            <Col xs='3'></Col>
-            <Col x2='6'>
+      <Row>
+        <Col xs='4'></Col>
+        <Col xs='2'><Button onClick={() => backPage()}>Prev</Button></Col>
+        <Col xs='2'><Button onClick={() => nextPage()}>Next</Button></Col>
+        <Col xs='4'></Col>
+      </Row>
+        {starPeople.map((starPerson, index) => 
+          <Row key={index}>
+            <Col xs='4'></Col>
+            <Col x2='4'>
               <Card starPerson={ starPerson }/>
             </Col>
-            <Col x2='3'></Col>
+            <Col x2='4'></Col>
           </Row>
         )}
       </Container>
